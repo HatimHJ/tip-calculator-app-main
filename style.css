@@ -1,0 +1,264 @@
+/**
+======================================
+=================reset & globals======
+======================================
+**/
+input:focus-visible{
+  outline-color: var(--strong-cyan);
+}
+::placeholder{
+  color: var(--dark-cyan);
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+button{cursor: pointer;}
+body{
+  --strong-cyan:hsl(172, 67%, 45%);
+  --dark-cyan:hsl(183, 100%, 15%);
+  --strong-gray:hsl(186, 14%, 43%);
+  --dark-gray:hsl(184, 14%, 56%);
+  --light-gray:hsl(185, 41%, 84%);
+  --white-1:hsl(189, 41%, 97%);
+  --white-2:hsl(0, 0%, 100%);
+  --soft-red:#ff7675;
+
+  font-family: 'Space Mono', monospace;
+  font-size: 15px;
+  background-color: var(--light-gray);
+}
+
+.sr-only{
+  visibility: hidden;
+  position: absolute;
+  top: -10rem;
+  left: -10rem;
+  width: 0;
+  height: 0;
+}
+
+.container{
+  width: 100%;
+  margin-inline: auto;
+}
+/* 
+======================================
+========================main app======
+======================================
+*/
+.tipper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 3rem;
+}
+/* 
+======================================
+============================Logo======
+======================================
+*/
+.logo{
+  text-align: center;
+}
+/* 
+======================================
+==========================inputs======
+======================================
+*/
+.calculator{
+  margin-top: 2rem;
+  background-color: var(--white-2);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 3rem 2rem;
+}
+.inputs{
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;  
+}
+/* =====================the bill */
+.bill-wrapper {
+  position: relative;
+}
+.bill-wrapper::before{
+  content: 'Bill';
+  position: absolute;
+  top: -25px;
+  left: 0px;
+  color: var(--strong-gray);
+}
+.bill-wrapper input,
+.person-wrapper input{
+  width: 100%;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--white-1);
+  direction: rtl;
+  color: var(--dark-cyan);
+  font-size: 22px;
+  font-weight: 700;  
+}
+.input{position: relative;}
+.input::before{
+  content: '';
+  position: absolute;
+  background: url(./images/icon-dollar.svg);
+  background-repeat: no-repeat;
+  width: 11px;
+  height: 17px;
+  top: 15px;
+  left: 10px;
+}
+/* =====================the tip */
+.tips-wrapper{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 1rem;
+  position: relative;
+}
+.tips-wrapper::before{
+  content: 'Select Tip %';
+  position: absolute;
+  top: -30px;
+  left: 0px;
+  color: var(--strong-gray);
+}
+
+.tips-wrapper button,
+.tips-wrapper input{
+  padding: 0.5rem;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  color: var(--white-2);
+  border-radius: 5px;
+  width: calc(100% - 1rem);
+}
+.tips-wrapper button{  
+  background-color: var(--dark-cyan);  
+  transition: all .4s;
+}
+.tips-wrapper button:hover{  
+  background-color: var(--strong-cyan);  
+}
+.tips-wrapper .picked{  
+  background-color: var(--strong-cyan);  
+  color: var(--white-1);
+}
+.tips-wrapper input{
+  padding-right: 1rem;
+  background-color: var(--light-gray);
+  text-align: right;
+  color: var(--dark-cyan);
+  
+}
+/* =====================the preson */
+.person-wrapper{
+  position: relative;
+}
+.person-wrapper::before{
+  content: 'Number Of People';
+  position: absolute;
+  top: -30px;
+  left: 0px;
+  color: var(--strong-gray);
+}
+.person-wrapper .input::before{
+  background: url(./images/icon-person.svg);
+  width: 13px;
+  height: 16px;
+}
+
+.error{
+  position: absolute;
+  top: -29px;
+  right: -5px;
+  color: var(--soft-red);
+  font-size: 13px;
+  visibility: hidden;
+}
+
+/* 
+======================================
+==========================result======
+======================================
+*/
+.result{
+  margin-top: 2rem;
+  background-color: var(--dark-cyan);
+  padding: 2rem;
+  border-radius: 10px;
+  color: var(--white-2);
+}
+.person-tip,
+.total-tip{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  position: relative;  
+}
+.total-tip::before,
+.person-tip::before{
+  content: '/ Person';
+  position: absolute;
+  bottom: -15px;
+  color: var(--strong-gray);
+}
+.value{
+  font-size: 25px;
+  color: var(--strong-cyan);
+}
+/* =======================buttons */
+.buttons{
+  display: flex;
+  flex-direction: column;
+  gap:1rem;
+  margin-top: 3rem;
+}
+.buttons button{
+  padding: 0.5rem;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  color: var(--dark-cyan);
+  background-color: var(--strong-cyan);
+  border-radius: 5px;
+  width:100% ;
+}
+.buttons button:first-of-type{
+  opacity: .3;
+}
+/* 
+======================================
+=====================media query======
+======================================
+*/
+@media screen and (min-width:768px) {
+  .container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 1rem;    
+  }
+  .calculator{
+    max-width: 90%;
+    margin-inline: auto;
+    border-radius: 10px;
+  }
+  .result{
+    margin-top: 0;
+  } 
+}
+@media screen and (min-width:1024px) {
+  .tipper{
+    min-height: 100vh;
+  }
+  
+  .tips-wrapper {
+    grid-template-columns: repeat(3, 32%);
+}
+  
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="shortcut icon"
+			href="images/favicon-32x32.png"
+			type="image/x-icon"
+		/>
+		<title>Tip calculator app</title>
+		<!-- google fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="tipper">
+			<div class="logo">
+				<img src="./images/logo.svg" alt="" />
+			</div>
+			<div class="calculator">
+				<div class="container">
+					<!-- calculation -->
+					<div class="inputs">
+						<!-- the bill -->
+						<div class="bill-wrapper">
+							<div class="input">
+								<input type="text" id="bill" placeholder="0.00" />
+								<label for="bill" class="sr-only">bill amount</label>
+							</div>
+						</div>
+						<!-- the tip -->
+						<div class="tips-wrapper">
+							<input
+								type="text"
+								hidden
+								id="default-tip"
+								class="picked"
+								value="0"
+							/>
+							<label for="default-tip" class="sr-only">default tip</label>
+							<button class="tip" id="5">5</button>
+							<button class="tip" id="10">10</button>
+							<button class="tip" id="15">15</button>
+							<button class="tip" id="20">25</button>
+							<button class="tip" id="20">50</button>
+							<input
+								type="text"
+								id="custom"
+								class="custom-tip tip"
+								placeholder="Custom"
+							/>
+						</div>
+						<!-- the person -->
+						<div class="person-wrapper">
+							<div class="input">
+								<input type="text" id="person" placeholder="0" />
+								<label for="person" class="sr-only"> person amount</label>
+								<span class="error hide">Can't Be Zero</span>
+							</div>
+						</div>
+					</div>
+					<!-- result -->
+					<div class="result">
+						<div class="person-tip">
+							<span class="block text">Tip Amount</span>
+							<span class="block value">0.00</span>
+						</div>
+						<div class="total-tip">
+							<span class="block text">Total</span>
+							<span class="block value">0.00</span>
+						</div>
+						<div class="buttons">
+							<button id="reset">Rest</button>
+							<button id="calculate">Calculate</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="functions.js"></script>
+		<script src="main.js"></script>
+		<script src="events.js"></script>
+	</body>
+</html>
